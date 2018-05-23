@@ -19,10 +19,10 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.permit(:action, :issue)
+      params
     end
 
     def load_issue
-      @issue = Issue.find(params[:id])
+      @issue = Issue.find(params[:issue_id])
     end
 end

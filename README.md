@@ -14,6 +14,26 @@
 
 ## Installation Instructions
 
+### Linux 64 Bits
+
+Installing Ruby on Ubuntu:
+  * [RVM](https://rvm.io/)
+
+## Up and running
+
+Inside folder's project, run:
+```sh
+$ docker-compose up
+
+$ gem install bundler
+$ bundle install (could take a while)
+
+$ rake db:create
+$ rake db:migrate
+$ rake db:migrate RAILS_ENV=test
+$ rails s
+```
+
 The project will serve in port 3000.
 
 To run the tests, run the following:
@@ -21,27 +41,14 @@ To run the tests, run the following:
 $ rspec
 ```
 
-### Linux 64 Bits
+## Tested
 
-Installing Ruby on Ubuntu:
-  * [RVM](https://rvm.io/)
-
-Installing PostgreSQL 9.6 via Docker:
+This app was tested with ngrok:
 
 ```sh
-$ docker pull sameersbn/postgresql:9.6-2
-$ docker build -t sameersbn/postgresql github.com/sameersbn/docker-postgresql
-$ docker run --name postgresql -itd --restart always --env 'PG_PASSWORD=passw0rd' sameersbn/postgresql:9.6-2 (SET PASSWORD)
+$ ./ngrok http 3000
 ```
 
-## Up and running
+And Postman:
 
-Inside folder's project, run:
-```sh
-$ gem install bundler
-$ bundle install (could take a while)
-$ rake db:create
-$ rake db:migrate
-$ rake db:migrate RAILS_ENV=test
-$ rails s
-```
+In development environment : localhost:3000/issues/2/events

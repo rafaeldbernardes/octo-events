@@ -3,11 +3,11 @@ class EventService
 
   def initialize(parameters = {})
     @action = parameters[:action]
-    @issue_number = parameters[:issue] ? parameters[:issue][:number] : ''
+    @issue_number = parameters[:issue] ? parameters[:issue][:number] : 1
   end
 
   def create
-    Issue.create!(id: @issue_number)
+    Issue.find_or_create_by(id: @issue_number)
     save_record(Event.new(action: @action, issue_id: @issue_number))
   end
 
