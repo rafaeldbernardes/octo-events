@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  database: octo_events_dev
+
+test:
+  <<: *default
+  database: octo_events_test
+
+production:
+  <<: *default
+  database: octo_events
